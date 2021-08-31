@@ -1,5 +1,5 @@
 const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer.js");
+const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
@@ -109,7 +109,7 @@ function appMenu() {
         name: "engGithub"
       }
     ]).then(answers => {
-      const engineer = new Engineer(answers.engName, answers.engId, answers.engEmail, answer.engGithub);
+      const engineer = new Engineer(answers.engName, answers.engId, answers.engEmail, answers.engGithub);
       teamMembers.push(engineer);
       idArray.push(answers.engId);
       createTeam();
@@ -141,7 +141,7 @@ function appMenu() {
     ]).then(answers => {
       const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
       teamMembers.push(intern);
-      idArray.push(internId);
+      idArray.push(answers.internId);
           createTeam();
     });
   }
