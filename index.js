@@ -16,17 +16,9 @@ const Employee = require("./lib/Employee");
 
 
 const teamMembers = [];
-// Create an id array to store the ids.
-// This array will be used to check the potential duplicate id newly entered by user
 const idArray = [];
 
 function appMenu() {
-  // Create manager first, then the manager will create a team
-  // Once manager is craeted, we will create team by asking the user which type of employee to create
-  // Based on the choice, we will create that employee object
-  // Loop throu the create team function until user is done from creating employees for the team
-  // then we will use the employee objects created to render html for the team
-
   function createManager() {
     console.log("Please build your team");
     inquirer.prompt([
@@ -38,12 +30,24 @@ function appMenu() {
       {
         type: "input",
         message: "Please enter your ID:",
-        name: "managerId"
+        name: "managerId",
+        validate: check = (value) => {
+          if (!isNaN(value)) {
+            return true;
+          }
+          return "Please enter valid ID, numbers only";
+        }  
       },
       {
         type: "input",
         message: "Please enter your Email:",
-        name: "managerEmail"
+        name: "managerEmail",
+        validate: check = (value) => {
+          if (value.includes("@") && value.includes(".")) {
+            return true;
+          }
+          return "Please enter valid email address";
+        }
       },
       {
         type: "input",
@@ -96,12 +100,24 @@ function appMenu() {
       {
         type: "input",
         message: "Please enter their ID: ",
-        name: "engId"
+        name: "engId",
+        validate: check = (value) => {
+          if (!isNaN(value)) {
+            return true;
+          }
+          return "Please enter valid ID, numbers only";
+        }
       },
       {
         type: "input",
         message: "Please enter their email: ",
-        name: "engEmail"
+        name: "engEmail",
+        validate: check = (value) => {
+          if (value.includes("@") && value.includes(".")) {
+            return true;
+          }
+          return "Please enter valid email address";
+        }
       },
       {
         type: "input",
@@ -126,12 +142,24 @@ function appMenu() {
       {
         type: "input",
         message: "Please enter their ID: ",
-        name: "internId"
+        name: "internId",
+        validate: check = (value) => {
+          if (!isNaN(value)) {
+            return true;
+          }
+          return "Please enter valid ID, numbers only";
+        }
       },
       {
         type: "input",
         message: "Please enter their email: ",
-        name: "internEmail"
+        name: "internEmail",
+        validate: check = (value) => {
+          if (value.includes("@") && value.includes(".")) {
+            return true;
+          }
+          return "Please enter valid email address";
+        }
       },
       {
         type: "input",
