@@ -1,5 +1,5 @@
 const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
+const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
@@ -12,6 +12,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 // const render = require("./lib/htmlRenderer");
 // Alternative rendering function
 const render = require("./lib/page-template.js");
+const Employee = require("./lib/Employee");
 
 
 const teamMembers = [];
@@ -29,11 +30,27 @@ function appMenu() {
   function createManager() {
     console.log("Please build your team");
     inquirer.prompt([
-      //
-      // YOUR CODE HERE:
-      // CREATE OBJECTS OF QUESTIONS HERE FOR MANAGER
+      {
+        type: "input",
+        message: "Please enter your name:",
+        name: "managerName"
+      },
+      {
+        type: "input",
+        message: "Please enter your ID:",
+        name: "managerId"
+      },
+      {
+        type: "input",
+        message: "Please enter your Email:",
+        name: "managerEmail"
+      },
+      {
+        type: "input",
+        message: "Please enter your office number:",
+        name: "managerOfficeNumber"
+      }
       // Strongly recommend to add validate property function for id and email
-      //
     ]).then(answers => {
       const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
       teamMembers.push(manager);
@@ -71,39 +88,61 @@ function appMenu() {
 
   function addEngineer() {
     inquirer.prompt([
-      //
-      // YOUR CODE HERE
-      // CREATE OBJECTS OF QUESTIONS FOR ENGINEER
-      //
+      {
+        type: "input",
+        message: "Please enter their name: ",
+        name: "engName"
+      },
+      {
+        type: "input",
+        message: "Please enter their ID: ",
+        name: "engId"
+      },
+      {
+        type: "input",
+        message: "Please enter their email: ",
+        name: "engEmail"
+      },
+      {
+        type: "input",
+        message: "Please enter their Github: ",
+        name: "engGithub"
+      }
     ]).then(answers => {
-      //
-      // YOUR CODE HERE
-      // 1. CREATE A VARIABLE TO STORE THE ENGINEER OBJECT INSTANTIATED WITH THE ENGINEER CLASS, PASSING ANSWERS PROPERTIES AS INPUT AURGUMENTS
-      //    TO THE ENGINEER CLASS CONSTRUCTOR
-      // 2. ADD (PUSH) THE ENGINEER VARIABLE TO the teamMembers ARRAY
-      // 3. ADD (PUSH) THE ENGINERR ID TO THE idArray ARRAY
-      //
-
+      const engineer = new Engineer(answers.engName, answers.engId, answers.engEmail, answer.engGithub);
+      teamMembers.push(engineer);
+      idArray.push(answers.engId);
       createTeam();
     });
   }
 
   function addIntern() {
     inquirer.prompt([
-      //
-      // YOUR CODE HERE
-      // CREATE OBJECTS OF QUESTIONS FOR ENGINEER
-      //
+      {
+        type: "input",
+        message: "Please enter their name: ",
+        name: "internName"
+      },
+      {
+        type: "input",
+        message: "Please enter their ID: ",
+        name: "internId"
+      },
+      {
+        type: "input",
+        message: "Please enter their email: ",
+        name: "internEmail"
+      },
+      {
+        type: "input",
+        message: "Please enter their school: ",
+        name: "internSchool"
+      }
     ]).then(answers => {
-      //
-      // YOUR CODE HERE
-      // 1. CREATE A VARIABLE TO STORE THE INTERN OBJECT INSTANTIATED WITH THE INTERN CLASS, PASSING ANSWERS PROPERTIES AS INPUT AURGUMENTS
-      //    TO THE INTERN CLASS CONSTRUCTOR
-      // 2. ADD (PUSH) THE INTERN VARIABLE TO the teamMembers ARRAY
-      // 3. ADD (PUSH) THE INTERN ID TO THE idArray ARRAY
-      //
-
-      createTeam();
+      const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+      teamMembers.push(intern);
+      idArray.push(internId);
+          createTeam();
     });
   }
 
