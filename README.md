@@ -5,6 +5,10 @@
   # Description
   
   A project that will take a managers input and create cards based on the employee type (engineer or intern). It will take their name and other pertinent information depending on which role they belong to.
+
+  Link to walkthrough: 
+  
+  https://drive.google.com/file/d/1ZKAUrv3cpP8ovblj0wE69AaD8OWr6hrw/view
   
   # Table of Contents
   
